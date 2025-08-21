@@ -21,10 +21,14 @@
 
 .logo {}
 
+.search,
+.search-result {
+    width: 361px;
+}
+
 .search {
     position: relative;
     display: flex;
-    width: 361px;
     height: var(--search-height);
     padding-left: 16px;
     background-color: rgba(22, 24, 35, 0.06);
@@ -86,9 +90,4 @@
     &:active {
         background-color: rgba(22, 24, 35, 0.06);
     }
-
-    // &:focus-within ~ .search {
-    //     outline: none !important;
-    //     border: none !important;
-    // }
 }
