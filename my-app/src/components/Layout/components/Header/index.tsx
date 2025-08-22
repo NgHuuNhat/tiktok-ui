@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import Tippy from '@tippyjs/react/headless';
 import Propper from '../../../Propper'
+import AccountItem from '../../../AccountItem'
 
 const cx = classNames.bind(styles)
 
@@ -34,6 +35,10 @@ export default function Header() {
                 <h4 className={cx('search-label')}>
                   Acounts
                 </h4>
+                <AccountItem/>
+                <AccountItem/>
+                <AccountItem/>
+                <AccountItem/>
               </Propper>
             </div>
           )}
