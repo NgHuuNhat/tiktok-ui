@@ -3,10 +3,12 @@ import styles from './Header.module.scss'
 import classNames from 'classnames/bind'
 import images from '../../../../assets/images'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faCircleXmark, faEllipsisVertical, faMagnifyingGlass, faSignIn, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import Tippy from '@tippyjs/react/headless';
 import Propper from '../../../Propper'
 import AccountItem from '../../../AccountItem'
+import Button from '../../../Button'
+import Menu from '../../../Propper/Menu'
 
 const cx = classNames.bind(styles)
 
@@ -25,6 +27,7 @@ export default function Header() {
         <div className={cx('logo')}>
           <img src={images.logo} alt="tiktok" />
         </div>
+
         <Tippy
           interactive
           appendTo={document.body}
@@ -35,10 +38,10 @@ export default function Header() {
                 <h4 className={cx('search-label')}>
                   Acounts
                 </h4>
-                <AccountItem/>
-                <AccountItem/>
-                <AccountItem/>
-                <AccountItem/>
+                <AccountItem />
+                <AccountItem />
+                <AccountItem />
+                <AccountItem />
               </Propper>
             </div>
           )}
@@ -54,7 +57,19 @@ export default function Header() {
             </button>
           </div>
         </Tippy>
-        <div className={cx('action')}>action</div>
+
+        <div className={cx('action')}>
+          <Button text>Upload</Button>
+          <Button leftIcon={<FontAwesomeIcon icon={faSignIn} />} primary onClick={() => alert('click')}>Login</Button>
+
+          <Menu>
+            <button className={cx('more-btn')}>
+              <FontAwesomeIcon className={cx('icon-btn')} icon={faEllipsisVertical} />
+            </button>
+          </Menu>
+
+        </div>
+
       </div>
     </header>
   )

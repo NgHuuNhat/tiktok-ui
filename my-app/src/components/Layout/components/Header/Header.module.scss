@@ -94,3 +94,26 @@
         background-color: rgba(22, 24, 35, 0.06);
     }
 }
+
+//action
+.action {
+    display: flex;
+    align-items: center;
+}
+
+.more-btn {
+    display: flex;
+    font-size: 2rem;
+    margin-left: 24px;
+    background-color: transparent;
+    // padding-bottom: 4px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+//menu
+.menu-items {
+    width: 224px;
+}
