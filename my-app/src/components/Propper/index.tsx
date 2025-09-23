@@ -4,9 +4,9 @@ import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
 
-export default function Propper({ children }: any) {
+export default function Propper({ children, className }: any) {
     return (
-        <div className={cx('propper')}>
+        <div className={cx('propper', className)}>
             {children}
         </div>
     )
