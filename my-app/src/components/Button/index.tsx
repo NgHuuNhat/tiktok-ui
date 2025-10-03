@@ -5,30 +5,29 @@ import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles)
 
-export default function Button({ to, href, onClick, children, primary, outline, small, large, text, disabled, leftIcon, rightIcon, ...passProps }: any) {
+export default function Button({ to, href, onClick, children, primary, outline, small, large, text, disabled, leftIcon, rightIcon, className, ...props }: any) {
     let Comp: any = 'button';
-    const props: any = {
-        onClick,
-        ...passProps
+    const _props: any = {
+        ...props
     }
 
     if (disabled) {
-        delete props.onClick;
+        delete _props.onClick;
     }
 
     if (to) {
-        props.to = to
+        _props.to = to
         Comp = Link
     } else if (href) {
-        props.href = href
+        _props.href = href
         Comp = 'a'
     }
 
 
-    const classes = cx('wrapper', { primary, outline, small, large, text, disabled, leftIcon, rightIcon })
+    const classes = cx('wrapper', className, { primary, outline, small, large, text, disabled, leftIcon, rightIcon })
 
     return (
-        <Comp className={classes} {...props}>
+        <Comp className={classes} {..._props}>
             {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
             <span className={cx('title')}>{children}</span>
             {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}

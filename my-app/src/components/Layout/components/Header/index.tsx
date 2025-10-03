@@ -45,13 +45,14 @@ const MENU_ITEMS = [
 ]
 
 export default function Header() {
-  const [searchResult, setSearchResult] = useState<any>([])
+  const [searchValue, setSearchValue] = useState('')
 
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([1, 2, 3])
-    }, 1000)
-  }, [])
+  // const [searchResult, setSearchResult] = useState<any>([])
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setSearchResult([1, 2, 3])
+  //   }, 1000)
+  // }, [])
 
   return (
     <header className={cx('wrapper')}>
@@ -63,7 +64,8 @@ export default function Header() {
         <Tippy
           interactive
           appendTo={document.body}
-          visible={searchResult.length > 0}
+          trigger="manual"
+          visible={searchValue.trim().length > 0}
           render={attrs => (
             <div className={cx('search-result')} tabIndex={-1} {...attrs}>
               <Propper>
@@ -79,11 +81,16 @@ export default function Header() {
           )}
         >
           <div className={cx('search')}>
-            <input type="text" placeholder='Search accounts and videos' spellCheck={false} />
-            <button className={cx('clear')}>
+            <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} type="text" placeholder='Search accounts and videos' spellCheck={false} />
+            {searchValue && (
+              <button type='button' className={cx('clear')} onClick={() => setSearchValue('')}>
+                <FontAwesomeIcon icon={faCircleXmark} />
+              </button>
+            )}
+            {/* <button className={cx('clear')}>
               <FontAwesomeIcon icon={faCircleXmark} />
-            </button>
-            <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+            </button> */}
+            {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
             <button className={cx('search-btn')}>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>

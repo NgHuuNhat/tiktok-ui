@@ -22,7 +22,7 @@ export default function Menu({ children, items }: any) {
     <Tippy
       interactive
       appendTo={document.body}
-      visible
+      // visible
       placement='bottom-end'
       render={attrs => (
         <div className={cx('menu-items')} tabIndex={-1} {...attrs}>

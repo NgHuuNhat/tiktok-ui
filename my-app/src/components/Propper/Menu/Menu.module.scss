@@ -1,9 +1,17 @@
-//menu
 .menu-items {
   width: 224px;
   margin-top: 12.5px;
-}
+  // background-color: red;
 
-// .menu-popper {
-//   padding-bottom: 8px;
-// }
+  .item {
+    // color: green; // ✔️ dấu ; mới đúng
+    width: 100%;
+    justify-content: flex-start;
+    border-radius: 0;
+    margin: 0;
+
+    &:hover {
+      background-color: rgba(22, 24, 35, 0.03); // ✔️ viết đầy đủ property
+    }
+  }
+}
