@@ -10,7 +10,7 @@ export default function Header({ title, onBack }: any) {
     return (
         <header className={cx('header')}>
             <button className={cx('back-btn')} onClick={onBack}>
-                <FontAwesomeIcon icon={faChevronLeft}/>
+                <FontAwesomeIcon icon={faChevronLeft} className={cx('icon')}/>
                 <h4 className={cx('header-title')}>{title}</h4>
             </button>
         </header>

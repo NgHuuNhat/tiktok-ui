@@ -39,6 +39,8 @@ export default function Menu({ children, items, onChange }: any) {
       interactive
       appendTo={document.body}
       // visible
+      trigger="click"
+      onHide={() => setHistory([{ data: items }])} 
       placement='bottom-end'
       render={attrs => (
         <div className={cx('menu-items')} tabIndex={-1} {...attrs}>
@@ -47,7 +49,7 @@ export default function Menu({ children, items, onChange }: any) {
             {/* Header hiển thị khi vào cấp con */}
             {history.length > 1 && (
               <Header
-                title='Languege'
+                title='Language'
                 onBack={() => setHistory((prev) => prev.slice(0, prev.length - 1))}
               />
             )}

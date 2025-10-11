@@ -28,17 +28,24 @@
 .back-btn {
   // background-color: yellow;
   background-color: transparent;
-  width: 50px;
+  width: 100%;
   height: 100%;
   cursor: pointer;
   font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  .icon {
+    width: 50px;
+  }
 }
 
 .header-title {
   // background-color: green;
   position: absolute;
-  top: 50%;
+  // top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%);
   font-size: 1.6rem;
 }
