@@ -21,12 +21,10 @@ const MENU_ITEMS = [
       title: 'Language',
       data: [
         {
-          type: 'language',
           code: 'en',
           title: 'English'
         },
         {
-          type: 'language',
           code: 'vi',
           title: 'Tiếng Việt'
         },
@@ -53,6 +51,10 @@ export default function Header() {
   //     setSearchResult([1, 2, 3])
   //   }, 1000)
   // }, [])
+
+  const handleMenuChange = (item:any) => {
+    console.log(item)
+  }
 
   return (
     <header className={cx('wrapper')}>
@@ -103,6 +105,7 @@ export default function Header() {
 
           <Menu
             items={MENU_ITEMS}
+            onChange={handleMenuChange}
           >
             <button className={cx('more-btn')}>
               <FontAwesomeIcon className={cx('icon-btn')} icon={faEllipsisVertical} />

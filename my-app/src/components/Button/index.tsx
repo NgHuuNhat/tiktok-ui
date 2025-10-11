@@ -8,6 +8,7 @@ const cx = classNames.bind(styles)
 export default function Button({ to, href, onClick, children, primary, outline, small, large, text, disabled, leftIcon, rightIcon, className, ...props }: any) {
     let Comp: any = 'button';
     const _props: any = {
+        onClick,
         ...props
     }
 
