@@ -12,6 +12,7 @@ const cx = classNames.bind(styles)
 export default function Menu({ children, items, onChange }: any) {
   const [history, setHistory] = useState([{ data: items }]); // lưu lịch sử menu
   const current = history[history.length - 1]; // cấp hiện tại
+  const [selectedLanguage, setSelectedLanguage] = useState('en')
 
   const renderItems = () => {
     return current.data.map((item: any, index: number) => {
@@ -21,10 +22,13 @@ export default function Menu({ children, items, onChange }: any) {
         <MenuItems
           key={index}
           data={item}
+          selectedLanguage={selectedLanguage}
           onClick={() => {
             if (isParent) {
               // ✅ chuyển vào cấp con: item.children.data
               setHistory((prev) => [...prev, item.children]);
+            } else if (item.type === 'language') {
+              setSelectedLanguage(item.code)
             } else {
               onChange(item)
             }
@@ -40,7 +44,7 @@ export default function Menu({ children, items, onChange }: any) {
       appendTo={document.body}
       visible
       // trigger="click"
-      onHide={() => setHistory([{ data: items }])} 
+      onHide={() => setHistory([{ data: items }])}
       placement='bottom-end'
       render={attrs => (
         <div className={cx('menu-items')} tabIndex={-1} {...attrs}>

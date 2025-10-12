@@ -4,21 +4,21 @@
   // background-color: red;
 
   .item {
-    // color: green; // ✔️ dấu ; mới đúng
-    width: 100%;
-    justify-content: flex-start;
-    border-radius: 0;
-    margin: 0;
-    line-height: 1.8rem;
-    // font-weight: 600;
+    // background-color: red;
 
     &.separate {
       border-top: 1px solid rgba(22, 24, 35, 0.12);
-      // padding-top: 17px 
     }
 
     &:hover {
       background-color: rgba(22, 24, 35, 0.03); // ✔️ viết đầy đủ property
+    }
+
+    .check-icon {
+      color: var(--primary-color, #20d5ec);
+      font-size: 1.4rem;
+      position: absolute;
+      right: 16px;
     }
   }
 }

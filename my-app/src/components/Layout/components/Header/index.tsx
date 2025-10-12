@@ -17,7 +17,7 @@ const cx = classNames.bind(styles)
 const MENU_ITEMS = [
   {
     icon: <FontAwesomeIcon icon={faEarthAfrica} />,
-    title: 'English',
+    title: 'Language',
     children: {
       title: 'Language',
       data: [
