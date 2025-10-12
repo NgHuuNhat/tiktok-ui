@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Menu.module.scss'
 import classNames from 'classnames/bind'
 import Tippy from '@tippyjs/react/headless';
@@ -14,6 +14,19 @@ export default function Menu({ children, items, onChange }: any) {
   const current = history[history.length - 1]; // cấp hiện tại
   const [selectedLanguage, setSelectedLanguage] = useState('en')
 
+  // 📥 đọc từ localStorage khi load trang
+  useEffect(() => {
+    const savedLang = localStorage.getItem('selectedLanguage');
+    if (savedLang) {
+      setSelectedLanguage(savedLang);
+    }
+  }, []);
+
+  const handleLanguageSelect = (code: string) => {
+    setSelectedLanguage(code);
+    localStorage.setItem('selectedLanguage', code); // 💾 lưu lại
+  };
+
   const renderItems = () => {
     return current.data.map((item: any, index: number) => {
       const isParent = !!item.children;
@@ -22,17 +35,18 @@ export default function Menu({ children, items, onChange }: any) {
         <MenuItems
           key={index}
           data={item}
-          selectedLanguage={selectedLanguage}
           onClick={() => {
             if (isParent) {
               // ✅ chuyển vào cấp con: item.children.data
               setHistory((prev) => [...prev, item.children]);
             } else if (item.type === 'language') {
-              setSelectedLanguage(item.code)
+              // setSelectedLanguage(item.code)
+              handleLanguageSelect(item.code)
             } else {
               onChange(item)
             }
           }}
+          selectedLanguage={selectedLanguage}
         />
       );
     });
