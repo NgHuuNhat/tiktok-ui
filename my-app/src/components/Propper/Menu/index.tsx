@@ -38,8 +38,8 @@ export default function Menu({ children, items, onChange }: any) {
     <Tippy
       interactive
       appendTo={document.body}
-      // visible
-      trigger="click"
+      visible
+      // trigger="click"
       onHide={() => setHistory([{ data: items }])} 
       placement='bottom-end'
       render={attrs => (

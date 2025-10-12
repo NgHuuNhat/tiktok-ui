@@ -77,7 +77,7 @@
     transform: translateY(-50%);
     color: rgba(22, 24, 35, 0.34);
 
-    &:hover{
+    &:hover {
         cursor: pointer;
     }
 }
@@ -104,21 +104,44 @@
 .action {
     display: flex;
     align-items: center;
-}
 
-.more-btn {
-    display: flex;
-    font-size: 2rem;
-    margin-left: 24px;
-    background-color: transparent;
-    // padding-bottom: 4px;
+    .more-btn {
+        display: flex;
+        font-size: 2rem;
+        margin-left: 24px;
+        background-color: transparent;
+        // padding-bottom: 4px;
 
-    &:hover {
-        cursor: pointer;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .action-btn {
+        // color: red;
+        background-color: transparent;
+        font-size: 2.4rem;
+        
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    .avatar {
+        width: 48px;
+        height: 48px;
+        object-fit: cover;
+        border-radius: 50%;
+
+        &:hover{
+            cursor: pointer;
+        }
     }
 }
 
+
+
 //menu
-.menu-items {
-    width: 224px;
-}
+// .menu-items {
+//     width: 224px;
+// }

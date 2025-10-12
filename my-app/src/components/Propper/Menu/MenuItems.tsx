@@ -12,7 +12,7 @@ export default function MenuItems({ data, onClick }: any) {
 
     return (
         <Button
-            className={cx('item')}
+            className={cx('item', {separate: data.separate})}
             to={data.to} leftIcon={data.icon}
             onClick={onClick}
         >
