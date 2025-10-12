@@ -104,12 +104,16 @@
 .action {
     display: flex;
     align-items: center;
+    gap: 20px;
 
     .more-btn {
-        display: flex;
-        font-size: 2rem;
-        margin-left: 24px;
+        // background-color: red;
         background-color: transparent;
+        // display: flex;
+        width: 48px;
+        height: 48px;
+        font-size: 2.2rem;
+        // margin-left: 24px;
         // padding-bottom: 4px;
 
         &:hover {
@@ -118,11 +122,27 @@
     }
 
     .action-btn {
+        position: relative;
         // color: red;
         background-color: transparent;
-        font-size: 2.4rem;
-        
-        &:hover{
+        font-size: 2.2rem;
+        margin-top: 5px;
+        // margin: 0 10px;
+
+        .badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: red;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50%;
+            padding: 3px 6px;
+            line-height: 1;
+        }
+
+        &:hover {
             cursor: pointer;
         }
     }
@@ -132,8 +152,9 @@
         height: 48px;
         object-fit: cover;
         border-radius: 50%;
+        border: 1px solid rgb(0 0 0 / 12%);
 
-        &:hover{
+        &:hover {
             cursor: pointer;
         }
     }

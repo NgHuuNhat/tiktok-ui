@@ -3,7 +3,8 @@ import styles from './Header.module.scss'
 import classNames from 'classnames/bind'
 import images from '../../../../assets/images'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleQuestion, faCircleXmark, faCloudUpload, faCoins, faEarthAfrica, faEllipsisVertical, faGear, faKeyboard, faMagnifyingGlass, faMessage, faSignIn, faSignOut, faSpinner, faUpload, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faMessage } from '@fortawesome/free-regular-svg-icons'
+import { faCircleQuestion, faCircleXmark, faCloudUpload, faCoins, faEarthAfrica, faEllipsisVertical, faGear, faKeyboard, faMagnifyingGlass, faSignIn, faSignOut, faSpinner, faUpload, faUser } from '@fortawesome/free-solid-svg-icons'
 import Tippy from '@tippyjs/react/headless';
 import Propper from '../../../Propper'
 import AccountItem from '../../../AccountItem'
@@ -66,7 +67,7 @@ const MENU_USER = [
     icon: <FontAwesomeIcon icon={faSignOut} />,
     title: 'Log out',
     to: '/logout',
-    separate: true, 
+    separate: true,
   },
 ]
 
@@ -138,16 +139,21 @@ export default function Header() {
           {currenUser ? (
             <>
               {/* <h4>Wellcome!</h4>  */}
-              <button className={cx('action-btn')}><FontAwesomeIcon icon={faCloudUpload} /></button>
-              <button className={cx('action-btn')}><FontAwesomeIcon icon={faMessage} /></button>
+              <button className={cx('action-btn')}>
+                <FontAwesomeIcon icon={faCloudUpload} />
+              </button>
+              <button className={cx('action-btn')}>
+                <FontAwesomeIcon icon={faMessage} />
+                <span className={cx('badge')}>1</span>
+              </button>
             </>
           ) : (
             <>
-              <Button text>Upload</Button>
+              <Button text outline>Upload</Button>
               <Button leftIcon={<FontAwesomeIcon icon={faSignIn} />} primary onClick={() => alert('click')}>Login</Button>
             </>
           )}
-           
+
           <Menu
             items={currenUser ? MENU_USER : MENU_ITEMS}
             onChange={handleMenuChange}
