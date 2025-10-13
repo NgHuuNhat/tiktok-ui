@@ -11,6 +11,7 @@ import AccountItem from '../../../AccountItem'
 import Button from '../../../Button'
 import Menu from '../../../Propper/Menu'
 import { Link } from 'react-router-dom'
+import { IconUpload } from '../../../Icons'
 
 const cx = classNames.bind(styles)
 
@@ -140,7 +141,8 @@ export default function Header() {
             <>
               {/* <h4>Wellcome!</h4>  */}
               <button className={cx('action-btn')}>
-                <FontAwesomeIcon icon={faCloudUpload} />
+                {/* <FontAwesomeIcon icon={faCloudUpload} /> */}
+                <IconUpload />
               </button>
               <button className={cx('action-btn')}>
                 <FontAwesomeIcon icon={faMessage} />
