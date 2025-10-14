@@ -12,6 +12,7 @@ import Button from '../../../Button'
 import Menu from '../../../Propper/Menu'
 import { Link } from 'react-router-dom'
 import { IconUpload } from '../../../Icons'
+import Image from '../../../Image/Image'
 
 const cx = classNames.bind(styles)
 
@@ -161,8 +162,8 @@ export default function Header() {
             onChange={handleMenuChange}
           >
             {currenUser ? (
-              <img
-                src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSSq-FoDF-DbpqB35H4BHxMHwzDeMYszGQIkgim1D-YNaolwhl_d3QYH_0-b9XdQ0OVdbmmzk8gJ-h4xb6UgJsWCJSSr3j_DKpQlML1TrjF'
+              <Image 
+                // src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSSq-FoDF-DbpqB35H4BHxMHwzDeMYszGQIkgim1D-YNaolwhl_d3QYH_0-b9XdQ0OVdbmmzk8gJ-h4xb6UgJsWCJSSr3j_DKpQlML1TrjF'
                 alt="avatar"
                 className={cx('avatar')}
               />
