@@ -13,6 +13,7 @@ import Menu from '../../../Propper/Menu'
 import { Link } from 'react-router-dom'
 import { IconUpload } from '../../../Icons'
 import Image from '../../../Image/Image'
+import Search from '../Search'
 
 const cx = classNames.bind(styles)
 
@@ -74,7 +75,7 @@ const MENU_USER = [
 ]
 
 export default function Header() {
-  const [searchValue, setSearchValue] = useState('')
+  // const [searchValue, setSearchValue] = useState('')
   const [currenUser, setCurrenUser] = useState(true)
 
   // const [searchResult, setSearchResult] = useState<any>([])
@@ -101,41 +102,9 @@ export default function Header() {
           <img src={images.logo} alt="tiktok" />
         </Link>
 
-        <Tippy
-          interactive
-          appendTo={document.body}
-          trigger="manual"
-          visible={searchValue.trim().length > 0}
-          render={attrs => (
-            <div className={cx('search-result')} tabIndex={-1} {...attrs}>
-              <Propper>
-                <h4 className={cx('search-label')}>
-                  Acounts
-                </h4>
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-              </Propper>
-            </div>
-          )}
-        >
-          <div className={cx('search')}>
-            <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} type="text" placeholder='Search accounts and videos' spellCheck={false} />
-            {searchValue && (
-              <button type='button' className={cx('clear')} onClick={() => setSearchValue('')}>
-                <FontAwesomeIcon icon={faCircleXmark} />
-              </button>
-            )}
-            {/* <button className={cx('clear')}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </button> */}
-            {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
-            <button className={cx('search-btn')}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-          </div>
-        </Tippy>
+        {/* search */}
+        <Search />
+
 
         <div className={cx('action')}>
           {currenUser ? (
@@ -162,7 +131,7 @@ export default function Header() {
             onChange={handleMenuChange}
           >
             {currenUser ? (
-              <Image 
+              <Image
                 // src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSSq-FoDF-DbpqB35H4BHxMHwzDeMYszGQIkgim1D-YNaolwhl_d3QYH_0-b9XdQ0OVdbmmzk8gJ-h4xb6UgJsWCJSSr3j_DKpQlML1TrjF'
                 alt="avatar"
                 className={cx('avatar')}
