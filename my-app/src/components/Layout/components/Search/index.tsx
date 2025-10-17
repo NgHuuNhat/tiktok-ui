@@ -85,7 +85,7 @@ export default function Search() {
                             <FontAwesomeIcon icon={faCircleXmark} />
                         </button>
                     )}
-                    <button className={cx('search-btn')}>
+                    <button className={cx('search-btn', { active: searchValue.trim() !== '' })}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
                 </div>
