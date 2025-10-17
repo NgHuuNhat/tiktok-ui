@@ -60,8 +60,22 @@
     }
 }
 
+.loading {
+    animation: spinner 0.1s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
 .search-btn {
-    width: var(--search-button-width) ;
+    width: var(--search-button-width);
     height: 100%;
     border-top-right-radius: var(--search-border-radius);
     border-bottom-right-radius: var(--search-border-radius);

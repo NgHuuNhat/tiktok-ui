@@ -10,7 +10,7 @@ const cx = classNames.bind(styles)
 
 export default function MenuItems({ data, onClick, selectedLanguage }: any) {
 
-    console.log('data', data)
+    // console.log('data', data)
 
     return (
         <Button

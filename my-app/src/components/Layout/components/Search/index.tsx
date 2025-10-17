@@ -1,9 +1,9 @@
 import Tippy from '@tippyjs/react';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Propper from '../../../Propper';
 import AccountItem from '../../../AccountItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import styles from './Search.module.scss';
 import classNames from 'classnames/bind';
 
@@ -12,25 +12,43 @@ const cx = classNames.bind(styles);
 export default function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState<any[]>([]);
-    const [showResult, setShowResult] = useState(false);
+    const [show, setShow] = useState(false);
     const inputRef = useRef<HTMLInputElement | null>(null);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (!searchValue.trim()) {
+            return
+        }
+        setLoading(true)
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+            .then(res => res.json())
+            .then(res => {
+                setSearchResult(res.data)
+                setLoading(false)
+            })
+            .catch(() => {
+                setLoading(false)
+            })
+
+    }, [searchValue])
 
     const handleClear = () => {
         // xóa kết quả và đóng dropdown
         setSearchValue('');
         setSearchResult([]);
-        setShowResult(false);
+        setShow(false);
         inputRef.current?.focus();
     };
 
     const handleOutside = () => {
         // khi click outside: đóng
-        setShowResult(false);
+        setShow(false);
     };
 
     const handleFocus = () => {
         if (searchValue.trim() !== '' && searchResult.length > 0) {
-            setShowResult(true);
+            setShow(true);
         }
     };
 
@@ -40,29 +58,28 @@ export default function Search() {
 
         if (v.trim() === '') {
             setSearchResult([]);
-            setShowResult(false);
+            setShow(false);
             return;
         }
 
         // giả lập kết quả trả về
-        setSearchResult([1, 2, 3]);
-        setShowResult(true);
+        setShow(true);
     };
 
     return (
         <div className={cx('search-wrapper')}>
             <Tippy
                 interactive
-                visible={showResult && searchResult.length > 0}
+                visible={show && searchResult.length > 0}
                 onClickOutside={handleOutside}
                 render={attrs =>
                     // render chỉ khi có kết quả (nên dropdown sẽ biến mất nếu kết quả bị xóa)
-                    showResult && searchResult.length > 0 ? (
+                    show && searchResult.length > 0 ? (
                         <div className={cx('search-result')} tabIndex={-1} {...attrs}>
                             <Propper>
                                 <h4 className={cx('search-label')}>Accounts</h4>
-                                {searchResult.map((_, i) => (
-                                    <AccountItem key={i} />
+                                {searchResult.map((result: any, i: any) => (
+                                    <AccountItem key={i} data={result} />
                                 ))}
                             </Propper>
                         </div>
@@ -80,11 +97,12 @@ export default function Search() {
                         placeholder="Search accounts and videos"
                         spellCheck={false}
                     />
-                    {searchValue && (
+                    {searchValue && !loading && (
                         <button type="button" className={cx('clear')} onClick={handleClear}>
                             <FontAwesomeIcon icon={faCircleXmark} />
                         </button>
                     )}
+                    {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
                     <button className={cx('search-btn', { active: searchValue.trim() !== '' })}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
