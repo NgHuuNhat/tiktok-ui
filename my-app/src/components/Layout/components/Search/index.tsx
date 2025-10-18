@@ -19,13 +19,13 @@ export default function Search() {
     const [show, setShow] = useState(false);
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [loading, setLoading] = useState(false);
-    const debouncedValue = useDebounce(searchValue, 500);
+    const debouncedValue = useDebounce(searchValue, 250);
 
     useEffect(() => {
         if (!debouncedValue.trim()) {
             return
         }
-        
+
         //call api bang ham
         const fetchSearch = async (value: string) => {
             setLoading(true);
@@ -127,11 +127,11 @@ export default function Search() {
                 render={attrs =>
                     // render chỉ khi có kết quả (nên dropdown sẽ biến mất nếu kết quả bị xóa)
                     show && searchResult.length > 0 ? (
-                        <div className={cx('search-result')} tabIndex={-1} {...attrs}>
+                        <div className={cx('search-result')} tabIndex={-1} {...attrs}  >
                             <Propper>
                                 <h4 className={cx('search-label')}>Accounts</h4>
                                 {searchResult.map((result: any, i: any) => (
-                                    <AccountItem key={i} data={result} />
+                                    <AccountItem key={i} data={result} onClick={() => setShow(false)} />
                                 ))}
                             </Propper>
                         </div>

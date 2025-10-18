@@ -8,7 +8,7 @@ import Upload from "../pages/Upload"
 const publicRoutes: any[] = [
     { path: '/', component: Home },
     { path: '/following', component: Following },
-    { path: '/@:nickname', component: Profile },
+    { path: '/:nickname', component: Profile },
     { path: '/upload', component: Upload, layout: HeaderOnly },
     { path: '/feedback', component: FeedBack },
 ]

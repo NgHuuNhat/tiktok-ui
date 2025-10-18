@@ -45,6 +45,11 @@
     &:has(input:focus) {
         border-color: rgba(22, 24, 35, 0.2);
     }
+
+    input {
+        font-family: "Roboto", sans-serif;
+        // background-color: red;
+    }
 }
 
 .clear,

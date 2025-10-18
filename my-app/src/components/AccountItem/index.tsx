@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
-export default function AccountItem({ data }: any) {
+export default function AccountItem({ data, onClick }: any) {
     return (
-        <Link to={`/@${data.nickname}`} className={cx('wrapper')}>
+        <Link to={`/@${data.nickname}`} className={cx('wrapper')} onClick={onClick}>
             <img className={cx('avatar')}
                 // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSko6jekgFV7mBsFEqRBLx_K5g_XMYBS5SNyw&s"
                 src={data.avatar}
