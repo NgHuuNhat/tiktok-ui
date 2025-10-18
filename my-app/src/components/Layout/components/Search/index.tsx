@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import styles from './Search.module.scss';
 import classNames from 'classnames/bind';
+import useDebounce from '../../../../hooks/useDebounce';
 
 const cx = classNames.bind(styles);
 
@@ -15,13 +16,14 @@ export default function Search() {
     const [show, setShow] = useState(false);
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [loading, setLoading] = useState(false);
+    const debouncedValue = useDebounce(searchValue, 500);
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debouncedValue.trim()) {
             return
         }
         setLoading(true)
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debouncedValue)}&type=less`)
             .then(res => res.json())
             .then(res => {
                 setSearchResult(res.data)
@@ -31,7 +33,7 @@ export default function Search() {
                 setLoading(false)
             })
 
-    }, [searchValue])
+    }, [debouncedValue])
 
     const handleClear = () => {
         // xóa kết quả và đóng dropdown
