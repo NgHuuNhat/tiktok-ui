@@ -7,6 +7,9 @@ import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-s
 import styles from './Search.module.scss';
 import classNames from 'classnames/bind';
 import useDebounce from '../../../../hooks/useDebounce';
+import axios from 'axios';
+import request from '../../../../utils/request';
+import { searchUsers } from '../../../../services/userService';
 
 const cx = classNames.bind(styles);
 
@@ -22,16 +25,63 @@ export default function Search() {
         if (!debouncedValue.trim()) {
             return
         }
-        setLoading(true)
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debouncedValue)}&type=less`)
-            .then(res => res.json())
-            .then(res => {
-                setSearchResult(res.data)
-                setLoading(false)
-            })
-            .catch(() => {
-                setLoading(false)
-            })
+        
+        //call api bang ham
+        const fetchSearch = async (value: string) => {
+            setLoading(true);
+            try {
+                const data = await searchUsers(value);
+                setSearchResult(data);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchSearch(debouncedValue)
+
+        // setLoading(true)
+
+        //fetch
+        // fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debouncedValue)}&type=less`)
+        //     .then(res => res.json())
+        //     .then(res => {
+        //         setSearchResult(res.data)
+        //         setLoading(false)
+        //     })
+        //     .catch(() => {
+        //         setLoading(false)
+        //     })
+
+        //axios
+        // axios.get(`https://tiktok.fullstack.edu.vn/api/users/search`, {
+        //     params: {
+        //         q: debouncedValue,
+        //         type: 'less'
+        //     }
+        // })
+        //     .then(res => {
+        //         console.log(res.data.data)
+        //         setSearchResult(res.data.data )
+        //         setLoading(false)
+        //     })
+        //     .catch(() => {
+        //         setLoading(false)
+        //     })
+
+        //request
+        // request.get(`/users/search`, {
+        //     params: {
+        //         q: debouncedValue,
+        //         type: 'less'
+        //     }
+        // })
+        //     .then(res => {
+        //         console.log(res.data.data)
+        //         setSearchResult(res.data.data)
+        //         setLoading(false)
+        //     })
+        //     .catch(() => {
+        //         setLoading(false)
+        //     })
 
     }, [debouncedValue])
 
