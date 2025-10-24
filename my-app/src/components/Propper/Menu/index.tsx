@@ -57,6 +57,7 @@ export default function Menu({ children, items, onChange }: any) {
       interactive
       appendTo={document.body}
       // visible
+      // hideOnClick={false}
       trigger="click" 
       onHide={() => setHistory([{ data: items }])}
       placement='bottom-end'

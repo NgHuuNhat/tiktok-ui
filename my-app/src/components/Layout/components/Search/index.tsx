@@ -8,8 +8,9 @@ import styles from './Search.module.scss';
 import classNames from 'classnames/bind';
 import useDebounce from '../../../../hooks/useDebounce';
 import axios from 'axios';
-import request from '../../../../utils/request';
+import request from '../../../../utils/api';
 import { searchUsers } from '../../../../services/userService';
+import api from '../../../../utils/api';
 
 const cx = classNames.bind(styles);
 
@@ -52,12 +53,13 @@ export default function Search() {
         //     })
 
         //axios
-        // axios.get(`https://tiktok.fullstack.edu.vn/api/users/search`, {
-        //     params: {
-        //         q: debouncedValue,
-        //         type: 'less'
-        //     }
-        // })
+        // axios
+        //     .get(`https://tiktok.fullstack.edu.vn/api/users/search`, {
+        //         params: {
+        //             q: debouncedValue,
+        //             type: 'less'
+        //         }
+        //     })
         //     .then(res => {
         //         console.log(res.data.data)
         //         setSearchResult(res.data.data )
@@ -67,13 +69,14 @@ export default function Search() {
         //         setLoading(false)
         //     })
 
-        //request
-        // request.get(`/users/search`, {
-        //     params: {
-        //         q: debouncedValue,
-        //         type: 'less'
-        //     }
-        // })
+        //api
+        // api
+        //     .get(`/users/search`, {
+        //         params: {
+        //             q: debouncedValue,
+        //             type: 'less'
+        //         }
+        //     })
         //     .then(res => {
         //         console.log(res.data.data)
         //         setSearchResult(res.data.data)
@@ -106,6 +109,11 @@ export default function Search() {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const v = e.target.value;
+
+        if(v.startsWith(' ')){
+            return
+        }
+
         setSearchValue(v);
 
         if (v.trim() === '') {

@@ -1,9 +1,9 @@
-import request from "../utils/request"
+import api from "../utils/api"
 
 //search //tìm kiếm user
 export const searchUsers = async (value: string) => {
     try {
-        const res = await request.get('/users/search', {
+        const res = await api.get('/users/search', {
             params: { q: value, type: 'less' },
         })
         return res.data.data
