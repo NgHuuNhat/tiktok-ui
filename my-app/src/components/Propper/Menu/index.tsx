@@ -53,9 +53,10 @@ export default function Menu({ children, items, onChange }: any) {
   };
 
   return (
+    // <>
     <Tippy
       interactive
-      appendTo={document.body}
+      // appendTo={() => document.body}
       // visible
       // hideOnClick={false}
       trigger="click"
@@ -64,8 +65,8 @@ export default function Menu({ children, items, onChange }: any) {
       render={attrs => (
         <div
           className={cx('menu-items')} tabIndex={-1} {...attrs}
-        onMouseEnter={() => document.body.style.overflow = 'hidden'}
-        onMouseLeave={() => document.body.style.overflow = ''}
+          onMouseEnter={() => document.body.style.overflow = 'hidden'}
+          onMouseLeave={() => document.body.style.overflow = ''}
         >
           <Propper className={cx('menu-popper')}>
             {/* <Header title='Language' /> */}
@@ -83,5 +84,6 @@ export default function Menu({ children, items, onChange }: any) {
     >
       {children}
     </Tippy>
+    // </>
   )
 }
