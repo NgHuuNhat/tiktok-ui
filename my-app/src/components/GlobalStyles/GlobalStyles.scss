@@ -29,6 +29,8 @@ body {
     line-height: 1.5;
     text-rendering: optimizeSpeed;
     color: var(--text-color);
+    // overscroll-behavior: contain; // ✅ chống “giật” body
+    // -webkit-overflow-scrolling: touch; // mượt mà trên iOS/macOS
 }
 
 button,

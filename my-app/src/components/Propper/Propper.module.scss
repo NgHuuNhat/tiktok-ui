@@ -1,13 +1,17 @@
 .propper {
-    width: 100%;
-    background-color: #fff;
-    //  background-color: red;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 12px;
-    border-radius: 8px;
-    max-height: min(calc(100vh - 96px - 60px), 734px);
-    min-height: 100px;
-    // padding-top: 8px;
-    padding: 8px 0;
-    margin-top: -8px;
-  }
-  
+  width: 100%;
+  background-color: #fff;
+  //  background-color: red;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 12px;
+  border-radius: 8px;
+  max-height: min(calc(100vh - 96px - 60px), 734px);
+  min-height: 100px;
+  // padding-top: 8px;
+  padding: 8px 0;
+  margin-top: -8px;
+  // background-color: red;
+  display: flex;
+  flex-direction: column;
+  // overscroll-behavior: contain;  // chặn cuộn lan ra ngoài
+  // -webkit-overflow-scrolling: touch; // cuộn mượt mac/iOS
+}

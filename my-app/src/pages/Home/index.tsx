@@ -52,7 +52,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div style={{ fontFamily: "sans-serif", lineHeight: "2em" }}>
+    <div style={{ fontFamily: "sans-serif", lineHeight: "2em", height: '2000px' }}>
       <h2>setInterval ⏳</h2>
       <p>Đã chạy {countInterval} giây</p>
       <span>---</span>

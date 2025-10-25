@@ -58,11 +58,15 @@ export default function Menu({ children, items, onChange }: any) {
       appendTo={document.body}
       // visible
       // hideOnClick={false}
-      trigger="click" 
+      trigger="click"
       onHide={() => setHistory([{ data: items }])}
       placement='bottom-end'
       render={attrs => (
-        <div className={cx('menu-items')} tabIndex={-1} {...attrs}>
+        <div
+          className={cx('menu-items')} tabIndex={-1} {...attrs}
+        onMouseEnter={() => document.body.style.overflow = 'hidden'}
+        onMouseLeave={() => document.body.style.overflow = ''}
+        >
           <Propper className={cx('menu-popper')}>
             {/* <Header title='Language' /> */}
             {/* Header hiển thị khi vào cấp con */}
@@ -72,7 +76,7 @@ export default function Menu({ children, items, onChange }: any) {
                 onBack={() => setHistory((prev) => prev.slice(0, prev.length - 1))}
               />
             )}
-            {renderItems()}
+            <div className={cx('menu-body')}>{renderItems()}</div>
           </Propper>
         </div>
       )}

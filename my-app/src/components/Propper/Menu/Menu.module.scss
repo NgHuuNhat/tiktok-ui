@@ -4,7 +4,9 @@
   // background-color: red;
 
   .item {
-    // background-color: red;
+    // background-color: red; 
+    position: relative;
+    overflow: hidden;
 
     &.separate {
       border-top: 1px solid rgba(22, 24, 35, 0.12);
@@ -23,12 +25,24 @@
   }
 }
 
+.menu-popper {
+  // background-color: red;
+  // display: flex;
+  // flex-direction: column;
+}
+
+.menu-body {
+  // background-color: red;
+  overflow-y: auto;
+}
+
 //header
 .header {
   // background-color: red;
   position: relative;
   height: 50px;
   margin-top: -8px;
+  flex-shrink: 0;
 }
 
 .back-btn {
