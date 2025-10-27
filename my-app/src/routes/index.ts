@@ -1,4 +1,4 @@
-import HeaderOnly from "../components/Layout/HeaderOnly"
+import HeaderOnly from "../layouts/HeaderOnly"
 import FeedBack from "../pages/FeedBack"
 import Following from "../pages/Following"
 import Home from "../pages/Home"

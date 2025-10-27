@@ -1,16 +1,16 @@
 import Tippy from '@tippyjs/react';
 import React, { useEffect, useRef, useState } from 'react';
-import Propper from '../../../Propper';
-import AccountItem from '../../../AccountItem';
+import Propper from '../../../components/Propper';
+import AccountItem from '../../../components/AccountItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import styles from './Search.module.scss';
 import classNames from 'classnames/bind';
-import useDebounce from '../../../../hooks/useDebounce';
+import useDebounce from '../../../hooks/useDebounce';
 import axios from 'axios';
-import request from '../../../../utils/api';
-import { searchUsers } from '../../../../services/userService';
-import api from '../../../../utils/api';
+import request from '../../../utils/api';
+import { searchUsers } from '../../../services/userService';
+import api from '../../../utils/api';
 
 const cx = classNames.bind(styles);
 
@@ -110,7 +110,7 @@ export default function Search() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const v = e.target.value;
 
-        if(v.startsWith(' ')){
+        if (v.startsWith(' ')) {
             return
         }
 
